@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Herrera_Dilan_Examen_Progreso_1.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<Herrera_Dilan_Examen_Progreso_1Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Herrera_Dilan_Examen_Progreso_1Context") ?? throw new InvalidOperationException("Connection string 'Herrera_Dilan_Examen_Progreso_1Context' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
